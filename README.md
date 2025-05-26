@@ -23,6 +23,7 @@ With over 38 plant disease categories, this system provides a practical solution
 - **Classes:** 38 different categories (e.g. Tomato Leaf Mold, Apple Scab, Corn Rust, etc.)  
 - **Labels:** Healthy vs diseased (crop-specific)  
 - **Images:** Preprocessed to `224x224` resolution
+- **Dataset:** https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset
 
 ---
 
@@ -35,6 +36,7 @@ With over 38 plant disease categories, this system provides a practical solution
 - **Loss Function:** Categorical Crossentropy  
 - **Optimizer:** Adam  
 - **Input Shape:** `(224, 224, 3)`
+- **Model:** https://drive.google.com/file/d/1gTUllvoZMRP4HBXMK7TBv2YhqZHXVjyl/view?usp=share_link
 
 ---
 
