@@ -72,3 +72,24 @@ pip install -r requirements.txt
 
 # Run the app
 streamlit run app.py
+
+## 🚀 Future Improvements
+
+- 🌐 Deploy the app using **Streamlit Cloud**, **Render**, or **Hugging Face Spaces**
+- 📊 Add **confidence scores** and visual explanations using Grad-CAM
+- 📱 Convert the model to **TensorFlow Lite (TFLite)** for mobile deployment
+- 🌍 Add multilingual support to increase accessibility for farmers worldwide
+- ⚙️ Integrate with APIs or IoT devices for field-level prediction and alerts
+
+---
+
+## 📫 Contact
+
+For collaborations, suggestions, or queries, feel free to reach out:
+
+- 📧 **Email:** nvinnako2@gitam.in  
+- 🔗 **LinkedIn:** [linkedin.com/in/vnr-nitish](https://linkedin.com/in/vnr-nitish)
+
+---
+
+> *"Empowering agriculture with AI — one leaf at a time."*
