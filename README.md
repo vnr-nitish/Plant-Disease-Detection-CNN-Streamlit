@@ -66,12 +66,13 @@ With over 38 plant disease categories, this system provides a practical solution
 
 ### ✅ How to Run the App:
 
-
-# Install required libraries
+ Install required libraries
 pip install -r requirements.txt
 
-# Run the app
+ Run the app
 streamlit run app.py
+
+---
 
 ## 🚀 Future Improvements
 
