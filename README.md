@@ -64,6 +64,8 @@ With over 38 plant disease categories, this system provides a practical solution
 - ✅ Prediction displayed with disease name  
 - 🖼️ Optional image preview
 
+---
+
 ### ✅ How to Run the App:
 
  Install required libraries
