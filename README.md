@@ -66,7 +66,7 @@ With over 38 plant disease categories, this system provides a practical solution
 
 ### ✅ How to Run the App:
 
-```bash
+
 # Install required libraries
 pip install -r requirements.txt
 
