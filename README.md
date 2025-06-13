@@ -1,4 +1,4 @@
-# 🌿 Plant Disease Classification Using CNN + Streamlit  
+# 🌿 Plant Disease Detection Using CNN + Streamlit  
 **Author:** Nitish Raj Vinnakota | [LinkedIn](https://linkedin.com/in/vnr-nitish)
 
 ---
