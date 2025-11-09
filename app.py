@@ -138,8 +138,6 @@ if page == "Home":
     st.write(
         "- Upload a leaf image on **Disease Recognition** to get a prediction.\n"
         "- The model (~299 MB) is downloaded from Google Drive on first run and cached.\n"
-        "- If the banner doesn’t show, ensure `Disease.png` exists at the repo root, "
-        "or set a public `BANNER_URL` in Secrets."
     )
 
 else:
@@ -162,3 +160,4 @@ else:
             st.info("Tip: Try another JPG/PNG. If it was HEIC/CMYK, convert to RGB PNG/JPG and retry.")
     else:
         st.info("Upload an image to begin.")
+
