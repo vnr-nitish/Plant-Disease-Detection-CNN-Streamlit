@@ -5,7 +5,6 @@ import tensorflow as tf
 from PIL import Image
 import gdown
 
-# ---------- CONFIG ----------
 MODEL_FILENAME = "plant_disease_cnn_model.keras"
 IMG_SIZE = (224, 224)
 
@@ -24,68 +23,58 @@ CLASS_NAMES = ['Apple___Apple_scab', 'Apple___Black_rot', 'Apple___Cedar_apple_r
                'Tomato___Target_Spot', 'Tomato___Tomato_Yellow_Leaf_Curl_Virus', 'Tomato___Tomato_mosaic_virus',
                'Tomato___healthy']
 
-# ---------- UTIL ----------
 def ensure_model_local() -> str:
-    """
-    Downloads the Keras model from Google Drive (via gdown) once,
-    using the MODEL_DRIVE_ID set in Streamlit secrets.
-    """
-    drive_id = st.secrets.get("MODEL_DRIVE_ID", "").strip()
-    if not drive_id:
+    file_id = st.secrets.get("MODEL_DRIVE_ID", "").strip()
+    if not file_id:
         raise RuntimeError(
-            "MODEL_DRIVE_ID is not set in Streamlit secrets.\n"
-            "Go to your Streamlit Cloud app → Settings → Secrets and add:\n"
-            "MODEL_DRIVE_ID = \"<your-file-id>\""
+            "MODEL_DRIVE_ID not set. In Streamlit Cloud → Settings → Secrets, add:\n"
+            'MODEL_DRIVE_ID = "1gTUllvoZMRP4HBXMK7TBv2YhqZHXVjyl"'
         )
-
     if not os.path.exists(MODEL_FILENAME):
         st.info("Downloading model from Google Drive…")
-        # gdown can use the full share URL or id. We pass id for robustness.
-        url = f"https://drive.google.com/uc?id={drive_id}"
+        url = f"https://drive.google.com/uc?id={file_id}"
         gdown.download(url, MODEL_FILENAME, quiet=False)
         if not os.path.exists(MODEL_FILENAME):
-            raise FileNotFoundError("Model download failed. Check MODEL_DRIVE_ID and sharing permissions.")
+            raise FileNotFoundError("Model download failed. Check Drive permissions and file id.")
     return MODEL_FILENAME
 
 @st.cache_resource(show_spinner=True)
 def load_model_cached():
     path = ensure_model_local()
-    model = tf.keras.models.load_model(path)
-    return model
+    try:
+        return tf.keras.models.load_model(path)
+    except Exception:
+        # Older-saved models (Keras2 format) sometimes need compile=False
+        return tf.keras.models.load_model(path, compile=False)
 
-def preprocess_image(pil_img: Image.Image) -> np.ndarray:
+def preprocess(pil_img: Image.Image) -> np.ndarray:
     img = pil_img.convert("RGB").resize(IMG_SIZE)
     arr = np.asarray(img, dtype=np.float32) / 255.0
-    return np.expand_dims(arr, axis=0)  # (1,H,W,3)
+    return np.expand_dims(arr, axis=0)
 
-def predict_image(pil_img: Image.Image) -> int:
+def predict(pil_img: Image.Image) -> int:
     model = load_model_cached()
-    x = preprocess_image(pil_img)
-    preds = model.predict(x, verbose=0)
-    return int(np.argmax(preds, axis=-1)[0])
+    x = preprocess(pil_img)
+    y = model.predict(x, verbose=0)
+    return int(np.argmax(y, axis=-1)[0])
 
-# ---------- UI ----------
-st.set_page_config(page_title="Plant Disease Prediction", page_icon="🌿", layout="centered")
-
+st.set_page_config(page_title="Plant Disease Prediction", page_icon="🌿")
 st.sidebar.title("Plant Disease Prediction")
 page = st.sidebar.selectbox("Select page", ["Home", "Disease Recognition"])
 
 st.markdown("<h1 style='text-align:center;'>Plant Disease Prediction System</h1>", unsafe_allow_html=True)
 
 if page == "Home":
-    st.write(
-        "Upload a leaf image on the **Disease Recognition** page to get a prediction. "
-        "The model file is stored on Google Drive and will be downloaded automatically on first run."
-    )
+    st.write("Go to **Disease Recognition** and upload a leaf image.")
 else:
-    uploaded = st.file_uploader("Choose a leaf image (JPG/PNG):", type=["jpg", "jpeg", "png"])
-    if uploaded:
-        img = Image.open(uploaded)
-        st.image(img, caption=uploaded.name, use_container_width=True)
+    up = st.file_uploader("Choose a leaf image (JPG/PNG):", type=["jpg","jpeg","png"])
+    if up:
+        img = Image.open(up)
+        st.image(img, caption=up.name, use_container_width=True)
         if st.button("Predict"):
-            with st.spinner("Analyzing image…"):
+            with st.spinner("Analyzing…"):
                 try:
-                    idx = predict_image(img)
+                    idx = predict(img)
                     st.success(f"Prediction: {CLASS_NAMES[idx]}")
                 except Exception as e:
                     st.error(f"Prediction failed: {e}")
