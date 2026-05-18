@@ -1,96 +1,186 @@
-# 🌿 Plant Disease Detection Using CNN + Streamlit  
-**Author:** Nitish Raj Vinnakota | [LinkedIn](https://linkedin.com/in/vnr-nitish)
+# Plant Disease Detection Using Deep Learning
+
+## Project Overview
+
+This project develops a deep learning-based Plant Disease Detection System capable of identifying plant diseases from leaf images using Convolutional Neural Networks (CNN). The model classifies images into 38 plant disease categories and is integrated with a Streamlit web application for real-time prediction.
+
+The system provides an automated approach for early disease diagnosis, helping farmers and researchers detect plant health issues efficiently and supporting sustainable agricultural practices.
 
 ---
 
-## 🔍 Project Overview
+## Problem Statement
 
-This project builds a **Convolutional Neural Network (CNN)** that accurately classifies plant diseases based on leaf images. It further integrates the model into a **Streamlit web application** that allows users to upload an image and get instant predictions.
+Plant diseases significantly impact crop productivity and agricultural output. Traditional disease identification often requires manual inspection and domain expertise, making the process time-consuming and less scalable.
 
-With over 38 plant disease categories, this system provides a practical solution to aid farmers and researchers in diagnosing plant diseases early, promoting **sustainable agriculture**.
-
----
-
-## 🎯 Problem Statement
-
-> Design and deploy an image classification model that can detect a variety of plant diseases across multiple crops with high accuracy using computer vision.
+The objective of this project is to build and deploy an image classification system capable of accurately detecting plant diseases using computer vision and deep learning techniques.
 
 ---
 
-## 🌱 Dataset
+## Dataset Information
 
-- **Type:** Plant Village Dataset (multi-class image dataset)  
-- **Classes:** 38 different categories (e.g. Tomato Leaf Mold, Apple Scab, Corn Rust, etc.)  
-- **Labels:** Healthy vs diseased (crop-specific)  
-- **Images:** Preprocessed to `224x224` resolution
-- **Dataset:** https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset
+**Dataset Used:** Plant Village Dataset
 
----
+Dataset characteristics:
 
-## 🧠 Model Architecture
+- Multi-class image dataset
+- 38 disease categories
+- Healthy and diseased plant classes
+- Crop-specific disease labels
+- Images resized to **224 × 224**
 
-- **Framework:** TensorFlow / Keras  
-- **Model:** Custom CNN  
-  - Conv2D → MaxPooling → Dropout → Flatten → Dense  
-- **Activation:** ReLU, Softmax  
-- **Loss Function:** Categorical Crossentropy  
-- **Optimizer:** Adam  
-- **Input Shape:** `(224, 224, 3)`
-- **Model:** https://drive.google.com/file/d/1gTUllvoZMRP4HBXMK7TBv2YhqZHXVjyl/view?usp=share_link
+Dataset Source:
 
----
+:contentReference[oaicite:0]{index=0}
 
-## 🧪 Evaluation Metrics
+Sample disease classes:
 
-- Training Accuracy  
-- Validation Accuracy  
-- Loss Curves  
-- Test accuracy over unseen images
+- Apple Scab
+- Tomato Leaf Mold
+- Corn Rust
+- Tomato Early Blight
+- Healthy Plant Leaves
 
 ---
 
-## 🧰 Tech Stack
+## Model Architecture
 
-- `Python`  
-- `TensorFlow / Keras`  
-- `NumPy`, `OpenCV`, `PIL`  
-- `Streamlit` for deployment  
-- `Matplotlib` for visualization  
+### Deep Learning Framework
 
----
+- TensorFlow
+- Keras
 
-## 🚀 Features of Streamlit Web App
+### CNN Architecture
 
-- 📤 Upload an image of a diseased leaf  
-- ⚙️ CNN model classifies it into one of 38 categories  
-- ✅ Prediction displayed with disease name  
-- 🖼️ Optional image preview
+Implemented layers:
 
----
+- Conv2D
+- MaxPooling2D
+- Dropout
+- Flatten
+- Dense
 
-### ✅ Delopyment:
+Model configuration:
 
-(https://plant-disease-detection-vnr.streamlit.app/)
+| Parameter | Value |
+|-----------|--------|
+| Input Shape | (224,224,3) |
+| Activation Function | ReLU, Softmax |
+| Optimizer | Adam |
+| Loss Function | Categorical Crossentropy |
+| Classification Type | Multi-class Classification |
+| Total Classes | 38 |
 
----
+Trained model:
 
-## 🚀 Future Improvements
-
-- 🌐 Deploy the app using **Streamlit Cloud**, **Render**, or **Hugging Face Spaces**
-- 📊 Add **confidence scores** and visual explanations using Grad-CAM
-- 📱 Convert the model to **TensorFlow Lite (TFLite)** for mobile deployment
-- 🌍 Add multilingual support to increase accessibility for farmers worldwide
-- ⚙️ Integrate with APIs or IoT devices for field-level prediction and alerts
-
----
-
-## 📫 Contact
-
-For collaborations, suggestions, or queries, feel free to reach out:
-
-- 📧 **Email:** nvinnako2@gitam.in  
-- 🔗 **LinkedIn:** [linkedin.com/in/vnr-nitish](https://linkedin.com/in/vnr-nitish)
+:contentReference[oaicite:1]{index=1}
 
 ---
 
-> *"Empowering agriculture with AI — one leaf at a time."*
+## System Workflow
+
+### Step 1: Data Preparation
+
+Performed:
+
+- Image preprocessing
+- Image resizing to 224 × 224
+- Dataset organization
+- Label preparation
+
+### Step 2: Model Development
+
+Implemented:
+
+- CNN architecture design
+- Model compilation
+- Training process
+- Hyperparameter setup
+
+### Step 3: Model Evaluation
+
+Evaluated using:
+
+- Training accuracy
+- Validation accuracy
+- Loss curves
+- Test image predictions
+
+### Step 4: Application Deployment
+
+Integrated the trained model into a Streamlit application.
+
+Implemented:
+
+- Image upload functionality
+- Image preview
+- Real-time prediction generation
+- Disease classification output
+
+---
+
+## Application Features
+
+### Prediction Capabilities
+
+- Upload plant leaf images
+- Real-time disease prediction
+- Classification across 38 categories
+- Instant prediction output
+
+### User Interface Features
+
+- Interactive Streamlit application
+- Image preview support
+- User-friendly interface
+- Fast prediction response
+
+---
+
+## Technologies Used
+
+| Category | Tools |
+|-----------|-------|
+| Programming Language | Python |
+| Deep Learning | TensorFlow, Keras |
+| Image Processing | OpenCV, PIL |
+| Numerical Computing | NumPy |
+| Visualization | Matplotlib |
+| Deployment | Streamlit |
+
+---
+
+## Model Evaluation
+
+Performance analysis includes:
+
+- Training accuracy
+- Validation accuracy
+- Loss visualization
+- Prediction performance on unseen images
+
+---
+
+## Deployment
+
+Live Application:
+
+:contentReference[oaicite:2]{index=2}
+
+---
+
+## Future Improvements
+
+- Add prediction confidence scores
+- Integrate Grad-CAM visualization
+- Convert model to TensorFlow Lite (TFLite)
+- Add multilingual support
+- Mobile application deployment
+- IoT integration for field-level monitoring
+
+---
+
+## Author
+
+**Vinnakota Nitish Raj**
+
+LinkedIn: :contentReference[oaicite:3]{index=3}
