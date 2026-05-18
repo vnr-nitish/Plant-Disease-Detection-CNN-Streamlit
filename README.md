@@ -158,7 +158,9 @@ Performance analysis includes:
 
 ## Deployment
 
-Live Application: https://plant-disease-detection-vnr.streamlit.app/
+Live Application: 
+
+https://plant-disease-detection-vnr.streamlit.app/
 ---
 
 ## Future Improvements
