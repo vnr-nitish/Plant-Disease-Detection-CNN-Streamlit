@@ -28,9 +28,7 @@ Dataset characteristics:
 - Crop-specific disease labels
 - Images resized to **224 × 224**
 
-Dataset Source:
-
-:contentReference[oaicite:0]{index=0}
+Dataset Source: https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset
 
 Sample disease classes:
 
@@ -70,9 +68,7 @@ Model configuration:
 | Classification Type | Multi-class Classification |
 | Total Classes | 38 |
 
-Trained model:
-
-:contentReference[oaicite:1]{index=1}
+Trained model: https://drive.google.com/file/d/1gTUllvoZMRP4HBXMK7TBv2YhqZHXVjyl/view?usp=share_link
 
 ---
 
@@ -162,10 +158,7 @@ Performance analysis includes:
 
 ## Deployment
 
-Live Application:
-
-:contentReference[oaicite:2]{index=2}
-
+Live Application: https://plant-disease-detection-vnr.streamlit.app/
 ---
 
 ## Future Improvements
@@ -183,4 +176,4 @@ Live Application:
 
 **Vinnakota Nitish Raj**
 
-LinkedIn: :contentReference[oaicite:3]{index=3}
+LinkedIn: https://linkedin.com/in/vnr-nitish
